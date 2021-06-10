@@ -25,7 +25,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".RegisterSuccessActivity" />
         <activity android:name=".ProductDetailsActivity" />
-        <activity android:name=".BillActivity"/>
+        <activity android:name=".BillActivity" />
+        <activity android:name=".BillSuccessActivity"/>
     </application>
 
 </manifest>

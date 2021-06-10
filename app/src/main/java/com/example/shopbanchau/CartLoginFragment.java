@@ -60,6 +60,7 @@ public class CartLoginFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), BillActivity.class);
                 startActivity(i);
+
             }
         });
     }

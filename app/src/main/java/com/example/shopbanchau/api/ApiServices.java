@@ -1,5 +1,6 @@
 package com.example.shopbanchau.api;
 
+import com.example.shopbanchau.models.Bill;
 import com.example.shopbanchau.models.CartItem;
 import com.example.shopbanchau.models.Product;
 import com.example.shopbanchau.models.Token;
@@ -81,4 +82,8 @@ public interface ApiServices {
     Call<Integer> getTotalPrice(@Query("cartId") int cartId,
                                 @Query("ship") int ship,
                                 @Query("discount") int discount);
+
+    @POST("api/bills")
+    Call<Bill> addBill(@Body Bill bill);
+
 }
