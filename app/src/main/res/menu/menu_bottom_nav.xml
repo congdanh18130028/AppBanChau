@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_home"
+        android:title="@string/action_home"
+        android:icon="@drawable/ic_home_bottom_menu"/>
+    <item android:id="@+id/action_cart"
+        android:title="@string/action_cart"
+        android:icon="@drawable/ic_cart_24_bottom_menu"/>
+    <item android:id="@+id/action_chat"
+        android:title="@string/action_chat"
+        android:icon="@drawable/ic_message_bottom_nenu"/>
+    <item android:id="@+id/action_user"
+        android:title="@string/action_user"
+        android:icon="@drawable/ic_user_bottom_menu"/>
+</menu>
