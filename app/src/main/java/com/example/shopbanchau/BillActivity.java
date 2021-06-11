@@ -16,7 +16,6 @@ import com.example.shopbanchau.models.Bill;
 import com.example.shopbanchau.models.BillDetails;
 import com.example.shopbanchau.models.BillDetailsAdapter;
 import com.example.shopbanchau.models.CartItem;
-import com.example.shopbanchau.models.CartItemAdapter;
 import com.example.shopbanchau.models.User;
 import com.example.shopbanchau.utils.DataLocalManager;
 import com.example.shopbanchau.utils.FormatCurrence;
@@ -84,7 +83,7 @@ public class BillActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Integer> call, Throwable t) {
-
+                Toast.makeText(getApplicationContext(), "fail api!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -134,6 +133,7 @@ public class BillActivity extends AppCompatActivity {
     }
 
     public void datHang(View view) {
+
         Bill bill = new Bill(Calendar.getInstance().getTime(), DataLocalManager.getId(), totalPrice, 0, false );
         ApiServices.apiService.addBill(bill).enqueue(new Callback<Bill>() {
             @Override

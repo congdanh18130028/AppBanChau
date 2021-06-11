@@ -5,6 +5,7 @@ import com.example.shopbanchau.models.CartItem;
 import com.example.shopbanchau.models.Product;
 import com.example.shopbanchau.models.Token;
 import com.example.shopbanchau.models.User;
+import com.example.shopbanchau.models.UserEdit;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -27,7 +28,7 @@ public interface ApiServices {
 
     Gson gson = new GsonBuilder()
             .setLenient()
-            .setDateFormat("yyyy-MM-dd HH:mm:ss")
+            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
             .create();
     
     ApiServices apiService = new Retrofit.Builder()
@@ -85,5 +86,11 @@ public interface ApiServices {
 
     @POST("api/bills")
     Call<Bill> addBill(@Body Bill bill);
+
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    @PATCH("api/users/{userId}")
+    Call<Void> editUser(@Path("userId") int id,
+                        @Header("Authorization") String Aut,
+                        @Body List<UserEdit> list);
 
 }

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import retrofit2.Response;
 
 public class UserLoginFragment extends Fragment {
     private Button btnLogout;
+    private LinearLayout btnEditAccount;
     private TextView txt_email;
 
     @Override
@@ -32,8 +34,20 @@ public class UserLoginFragment extends Fragment {
         logout(view);
         setEmail(view);
         getTokenAndId();
+        clickButtonEditAccount(view);
         return view;
 
+    }
+
+    private void clickButtonEditAccount(View view) {
+        btnEditAccount = view.findViewById(R.id.btn_edit_account);
+        btnEditAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EditProfideUser.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getTokenAndId() {

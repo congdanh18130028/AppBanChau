@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShopBanChau"
         android:usesCleartextTraffic="true">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +25,10 @@
         <activity android:name=".RegisterSuccessActivity" />
         <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".BillActivity" />
-        <activity android:name=".BillSuccessActivity"/>
+        <activity android:name=".BillSuccessActivity" />
+        <activity android:name=".EditProfideUser" />
+        <activity android:name=".EditAddressActivity" />
+        <activity android:name=".ChangesPassword"/>
     </application>
 
 </manifest>

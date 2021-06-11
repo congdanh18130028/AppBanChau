@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
         if(password.length()<6){
-            Toast.makeText(getApplicationContext(), "Đặt mật khẩu phải lớn hơn 6 kí tự", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Đặt mật khẩu phải lớn hơn 5 kí tự", Toast.LENGTH_SHORT).show();
             return false;
         }
         if(TextUtils.isEmpty(repassword)){
