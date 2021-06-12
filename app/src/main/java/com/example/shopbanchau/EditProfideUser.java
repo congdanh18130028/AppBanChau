@@ -25,8 +25,24 @@ public class EditProfideUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profide_user);
+        getIntent().setAction("Already created");
         setView();
         setButtonEdit();
+    }
+
+    @Override
+    protected void onResume() {
+        String action = getIntent().getAction();
+        if(action == null || !action.equals("Already created")) {
+            Intent intent = new Intent(this, EditProfideUser.class);
+            startActivity(intent);
+            finish();
+        }
+        else{
+            getIntent().setAction(null);
+        }
+
+        super.onResume();
     }
 
     private void setButtonEdit() {

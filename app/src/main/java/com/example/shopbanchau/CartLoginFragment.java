@@ -67,7 +67,7 @@ public class CartLoginFragment extends Fragment {
 
 
     private void setTotalPrice() {
-        ApiServices.apiService.getTotalPrice(DataLocalManager.getCartId(), 0 ,0).enqueue(new Callback<Integer>() {
+        ApiServices.apiService.getTotalPrice(DataLocalManager.getCartId(), 0 ,0, DataLocalManager.getToken()).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if(response.isSuccessful()){
@@ -85,7 +85,7 @@ public class CartLoginFragment extends Fragment {
     }
 
     private void setListCartItem() {
-        ApiServices.apiService.getAllCartItem(DataLocalManager.getCartId()).enqueue(new Callback<List<CartItem>>() {
+        ApiServices.apiService.getAllCartItem(DataLocalManager.getCartId(), DataLocalManager.getToken()).enqueue(new Callback<List<CartItem>>() {
             @Override
             public void onResponse(Call<List<CartItem>> call, Response<List<CartItem>> response) {
                 if(response.isSuccessful()){

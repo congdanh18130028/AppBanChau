@@ -53,7 +53,7 @@ public class BillActivity extends AppCompatActivity {
         txt_tong_tien_hang = findViewById(R.id.txt_tong_tien_hang);
         txt_tong_thanh_toan = findViewById(R.id.txt_tong_thanh_toan);
         txt_total_price = findViewById(R.id.txt_tong_thanh_toan_bottom);
-        ApiServices.apiService.getTotalPrice(DataLocalManager.getCartId(), 0, 0).enqueue(new Callback<Integer>() {
+        ApiServices.apiService.getTotalPrice(DataLocalManager.getCartId(), 0, 0, DataLocalManager.getToken()).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if(response.isSuccessful()){
@@ -69,7 +69,7 @@ public class BillActivity extends AppCompatActivity {
             }
         });
 
-        ApiServices.apiService.getTotalPrice(DataLocalManager.getCartId(), 30000, 0).enqueue(new Callback<Integer>() {
+        ApiServices.apiService.getTotalPrice(DataLocalManager.getCartId(), 30000, 0, DataLocalManager.getToken()).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if(response.isSuccessful()){
@@ -111,7 +111,7 @@ public class BillActivity extends AppCompatActivity {
     }
 
     private void setListBillDetails() {
-        ApiServices.apiService.getAllCartItem(DataLocalManager.getCartId()).enqueue(new Callback<List<CartItem>>() {
+        ApiServices.apiService.getAllCartItem(DataLocalManager.getCartId(), DataLocalManager.getToken()).enqueue(new Callback<List<CartItem>>() {
             @Override
             public void onResponse(Call<List<CartItem>> call, Response<List<CartItem>> response) {
                 if(response.isSuccessful()){
@@ -135,7 +135,7 @@ public class BillActivity extends AppCompatActivity {
     public void datHang(View view) {
 
         Bill bill = new Bill(Calendar.getInstance().getTime(), DataLocalManager.getId(), totalPrice, 0, false );
-        ApiServices.apiService.addBill(bill).enqueue(new Callback<Bill>() {
+        ApiServices.apiService.addBill(bill, DataLocalManager.getToken()).enqueue(new Callback<Bill>() {
             @Override
             public void onResponse(Call<Bill> call, Response<Bill> response) {
                 if(response.isSuccessful()){

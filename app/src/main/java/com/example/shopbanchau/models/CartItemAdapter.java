@@ -115,7 +115,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
                 @Override
                 public void onClick(View v) {
                     cartItemId = Integer.parseInt(id.getText().toString());
-                    ApiServices.apiService.increaseQuantity(cartItemId).enqueue(new Callback<Void>() {
+                    ApiServices.apiService.increaseQuantity(cartItemId, DataLocalManager.getToken()).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             if(response.isSuccessful()){
@@ -140,7 +140,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
                 @Override
                 public void onClick(View v) {
                     cartItemId = Integer.parseInt(id.getText().toString());
-                    ApiServices.apiService.decreaseQuantity(cartItemId).enqueue(new Callback<Void>() {
+                    ApiServices.apiService.decreaseQuantity(cartItemId, DataLocalManager.getToken()).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             if(response.isSuccessful()){
@@ -169,7 +169,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
                 @Override
                 public void onClick(View v) {
                     cartItemId = Integer.parseInt(id.getText().toString());
-                    ApiServices.apiService.removeCartItem(cartItemId).enqueue(new Callback<Void>() {
+                    ApiServices.apiService.removeCartItem(cartItemId, DataLocalManager.getToken()).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             if(response.isSuccessful()){
@@ -193,7 +193,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
 
         private void setTotalPrice() {
             TextView txt_total_price = cartLoginFragment.getView().findViewById(R.id.txt_total_price_cart);
-            ApiServices.apiService.getTotalPrice(DataLocalManager.getCartId(), 0 ,0).enqueue(new Callback<Integer>() {
+            ApiServices.apiService.getTotalPrice(DataLocalManager.getCartId(), 0 ,0, DataLocalManager.getToken()).enqueue(new Callback<Integer>() {
                 @Override
                 public void onResponse(Call<Integer> call, Response<Integer> response) {
                     if(response.isSuccessful()){

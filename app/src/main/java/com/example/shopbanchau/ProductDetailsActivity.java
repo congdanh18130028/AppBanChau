@@ -102,7 +102,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         int cartId = DataLocalManager.getCartId();
         if(cartId!=0){
             CartItem cartItem = new CartItem(product_id, quantity, cartId);
-            ApiServices.apiService.addCart(cartItem).enqueue(new Callback<CartItem>() {
+            ApiServices.apiService.addCart(cartItem, DataLocalManager.getToken()).enqueue(new Callback<CartItem>() {
                 @Override
                 public void onResponse(Call<CartItem> call, Response<CartItem> response) {
                     if(response.isSuccessful()){

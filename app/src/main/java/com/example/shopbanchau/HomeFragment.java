@@ -1,10 +1,14 @@
 package com.example.shopbanchau;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,11 +36,24 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView rcvProduct;
     private ProductAdapter productAdapter;
+    private EditText edt;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        edt = view.findViewById(R.id.txt_value_search);
+        edt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_SEARCH){
+                    Toast.makeText(getContext(), "search", Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+        });
+
         rcvProduct = view.findViewById(R.id.rcv_product);
         productAdapter = new ProductAdapter(view.getContext());
         GridLayoutManager manager = new GridLayoutManager(view.getContext(), 2);

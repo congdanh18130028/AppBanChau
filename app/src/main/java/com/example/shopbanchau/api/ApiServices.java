@@ -64,28 +64,42 @@ public interface ApiServices {
     @GET("api/products/{productId}")
     Call<Product> getProduct(@Path("productId") int id);
 
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @POST("api/carts")
-    Call<CartItem> addCart(@Body CartItem cartItem);
-    
+    Call<CartItem> addCart(@Body CartItem cartItem,
+                           @Header("Authorization") String Aut);
+
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @GET("api/carts/{cartId}")
-    Call<List<CartItem>> getAllCartItem(@Path("cartId") int id);
+    Call<List<CartItem>> getAllCartItem(@Path("cartId") int id,
+                                        @Header("Authorization") String Aut);
 
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @PATCH("api/carts/increase/{cartItemId}")
-    Call<Void> increaseQuantity(@Path("cartItemId") int id);
+    Call<Void> increaseQuantity(@Path("cartItemId") int id,
+                                @Header("Authorization") String Aut);
 
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @PATCH("api/carts/decrease/{cartItemId}")
-    Call<Void> decreaseQuantity(@Path("cartItemId") int id);
+    Call<Void> decreaseQuantity(@Path("cartItemId") int id,
+                                @Header("Authorization") String Aut);
 
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @DELETE("api/carts/{cartItemId}")
-    Call<Void> removeCartItem(@Path("cartItemId") int id);
+    Call<Void> removeCartItem(@Path("cartItemId") int id,
+                              @Header("Authorization") String Aut);
 
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @GET("api/carts/totalPrice")
     Call<Integer> getTotalPrice(@Query("cartId") int cartId,
                                 @Query("ship") int ship,
-                                @Query("discount") int discount);
+                                @Query("discount") int discount,
+                                @Header("Authorization") String Aut);
 
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @POST("api/bills")
-    Call<Bill> addBill(@Body Bill bill);
+    Call<Bill> addBill(@Body Bill bill,
+                       @Header("Authorization") String Aut);
 
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @PATCH("api/users/{userId}")

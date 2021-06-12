@@ -25,9 +25,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getIntent().setAction("Already created");
 
         setupBottomNavigationView();
         setPosAfterLogin();
+
+    }
+
+    @Override
+    protected void onResume() {
+        String action = getIntent().getAction();
+        if(action == null || !action.equals("Already created")) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else{
+            getIntent().setAction(null);
+        }
+
+        super.onResume();
 
     }
 
