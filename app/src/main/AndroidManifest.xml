@@ -28,7 +28,9 @@
         <activity android:name=".BillSuccessActivity" />
         <activity android:name=".EditProfideUser" />
         <activity android:name=".EditAddressActivity" />
-        <activity android:name=".ChangesPassword"/>
+        <activity android:name=".ChangesPassword" />
+        <activity android:name=".ProductActivity" />
+        <activity android:name=".SearchActivity"/>
     </application>
 
 </manifest>

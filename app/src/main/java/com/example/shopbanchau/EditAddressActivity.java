@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shopbanchau.api.ApiServices;
@@ -28,6 +30,7 @@ public class EditAddressActivity extends AppCompatActivity {
     private EditText txt;
     private Button btn;
     private String typeEdit;
+    private ImageButton btn_back;
 
     public static final Pattern PHONE_VN
             = Pattern.compile(
@@ -39,7 +42,9 @@ public class EditAddressActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_address);
         Intent i = getIntent();
         typeEdit = i.getStringExtra("TYPE");
+        setTitle();
         getUser();
+        setBtnBack();
         txt = findViewById(R.id.txt_text_edit_account);
         btn = findViewById(R.id.btn_save_edit_account);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +53,31 @@ public class EditAddressActivity extends AppCompatActivity {
                 saveInfomation();
             }
         });
+    }
+
+    private void setBtnBack() {
+        btn_back = findViewById(R.id.btn_back_address);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+    private void setTitle(){
+        TextView txt = findViewById(R.id.title_address);
+        switch (typeEdit){
+            case "name":
+                txt.setText("Sửa tên");
+                break;
+            case "phone":
+                txt.setText("Sửa số điện thoại");
+                break;
+            case "address":
+                txt.setText("Sửa địa chỉ");
+                break;
+
+        }
     }
 
     private void saveInfomation() {

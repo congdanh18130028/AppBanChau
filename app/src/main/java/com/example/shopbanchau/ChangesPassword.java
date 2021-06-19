@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ public class ChangesPassword extends AppCompatActivity {
     private TextView txt_mk_cu, txt_mk_moi, txt_nl_mk_moi;
     private User _user;
     private Button btn;
+    private ImageButton btn_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,15 @@ public class ChangesPassword extends AppCompatActivity {
         });
 
 
+    }
+    private void setBtnBack() {
+        btn_back = findViewById(R.id.btn_back_change_pass);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void changePassword() {

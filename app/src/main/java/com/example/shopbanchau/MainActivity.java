@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,11 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private ViewPager viewPager;
+    public static Activity main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        main = this;
         getIntent().setAction("Already created");
 
         setupBottomNavigationView();
@@ -32,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public static Activity getInstance(){
+        return main;
+    }
     @Override
     protected void onResume() {
         String action = getIntent().getAction();

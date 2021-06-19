@@ -29,7 +29,7 @@
             android:text="Name" />
 
         <ImageButton
-            android:id="@+id/btn_search"
+            android:id="@+id/btn_sidebar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -76,7 +76,7 @@
                     android:text="Giá" />
 
                 <ImageButton
-                    android:id="@+id/imageButton"
+                    android:id="@+id/btn_price_up"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -87,7 +87,7 @@
                     app:srcCompat="@drawable/ic_arrow_upward_24" />
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
+                    android:id="@+id/btn_price_down"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -128,7 +128,7 @@
                     android:text="Giá từ" />
 
                 <Spinner
-                    android:id="@+id/spinner"
+                    android:id="@+id/spinner_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

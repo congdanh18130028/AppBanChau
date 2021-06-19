@@ -33,6 +33,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         this.mListProduct = list;
         notifyDataSetChanged();
     }
+    public void removeData(){
+        this.mListProduct.clear();
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override

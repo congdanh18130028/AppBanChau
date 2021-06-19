@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,13 +22,25 @@ public class EditProfideUser extends AppCompatActivity {
     private TextView txt_name, txt_phone, txt_address;
     private User _user;
     private LinearLayout btn_name, btn_phone, btn_address, btn_password;
+    private ImageButton btn_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profide_user);
         getIntent().setAction("Already created");
         setView();
+        setBtnBack();
         setButtonEdit();
+    }
+
+    private void setBtnBack() {
+        btn_back = findViewById(R.id.btn_back_change_profide);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override

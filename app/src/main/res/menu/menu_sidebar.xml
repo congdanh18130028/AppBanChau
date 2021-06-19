@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:id="@+id/chau_mo_hinh"
+            android:title="Chậu mô hình">
+        </item>
+
+        <item
+            android:id="@+id/chau_ve"
+            android:title="Chậu vẽ">
+        </item>
+
+        <item
+            android:id="@+id/chau_su"
+            android:title="Chậu sứ">
+        </item>
+
+        <item
+            android:id="@+id/chau_dat_nung"
+            android:title="Chậu đất nung">
+        </item>
+
+        <item
+            android:id="@+id/chau_thuy_ting"
+            android:title="Chậu thủy tinh">
+        </item>
+
+
+</menu>

@@ -9,7 +9,7 @@ import com.example.shopbanchau.models.CartItem;
 import com.example.shopbanchau.models.Product;
 import com.example.shopbanchau.utils.DataLocalManager;
 import com.example.shopbanchau.utils.FormatCurrence;
-import com.google.android.material.snackbar.Snackbar;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,12 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.shopbanchau.databinding.ActivityProductDetailsBinding;
 import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
@@ -38,18 +32,29 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private Product product;
     private TextView txt_id, txt_title, txt_price, txt_description;
     private ImageView img;
-    private ImageButton btn_add_cart;
+    private ImageButton btn_add_cart, btn_back;
     private Button btn_buy_now;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
+        btn_back = findViewById(R.id.btn_back_address);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         setId();
         getProduct();
 
 
+
     }
+
+
 
     private void setView(Product product) {
         txt_id = findViewById(R.id.product_id);
@@ -59,6 +64,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         img = findViewById(R.id.product_img);
 
         btn_add_cart = findViewById(R.id.btn_add_cart);
+
         btn_buy_now = findViewById(R.id.btn_buy_now);
 
         txt_id.setText(String.valueOf(product.getId()));
@@ -124,4 +130,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     public void byNow(View view) {
     }
+
+
 }

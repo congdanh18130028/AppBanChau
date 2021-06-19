@@ -61,6 +61,33 @@ public interface ApiServices {
     @GET("api/products")
     Call<List<Product>> getProducts();
 
+    @GET("api/products/search")
+    Call<List<Product>> getProductsSearch(@Query("value") String value);
+
+    @GET("api/products/category")
+    Call<List<Product>> getProductsCategory(@Query("category") String category);
+
+    @GET("api/products/asc")
+    Call<List<Product>> getProductsAsc();
+
+    @GET("api/products/category/asc")
+    Call<List<Product>> getProductsCategoryAsc(@Query("category") String category);
+
+    @GET("api/products/desc")
+    Call<List<Product>> getProductsDesc();
+
+    @GET("api/products/category/desc")
+    Call<List<Product>> getProductsCategoryDesc(@Query("category") String category);
+
+    @GET("api/products/price")
+    Call<List<Product>> getProductsPrice(@Query("price1") int price1,
+                                         @Query("price2") int price2);
+
+    @GET("api/products/category/price")
+    Call<List<Product>> getProductsCategoryPrice(@Query("category") String category,
+                                                 @Query("price1") int price1,
+                                                 @Query("price2") int price2);
+
     @GET("api/products/{productId}")
     Call<Product> getProduct(@Path("productId") int id);
 
@@ -106,5 +133,6 @@ public interface ApiServices {
     Call<Void> editUser(@Path("userId") int id,
                         @Header("Authorization") String Aut,
                         @Body List<UserEdit> list);
+
 
 }
