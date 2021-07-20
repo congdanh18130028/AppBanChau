@@ -33,10 +33,27 @@ public class UserLoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user_login, container, false);
         logout(view);
         setEmail(view);
-        getTokenAndId();
+        setCartId();
         clickButtonEditAccount(view);
         return view;
 
+    }
+
+    private void setCartId() {
+        ApiServices.apiService.getCartId(DataLocalManager.getId(), DataLocalManager.getToken()).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful()){
+                    int cartId = response.body();
+                    DataLocalManager.setCartId(cartId);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Toast.makeText(getContext(), "api fail!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void clickButtonEditAccount(View view) {
@@ -50,31 +67,7 @@ public class UserLoginFragment extends Fragment {
         });
     }
 
-    private void getTokenAndId() {
-        try {
-            String token = DataLocalManager.getToken();
-            int id = DataLocalManager.getId();
-            setCartIdDataLocal(id, token);
-        }catch (NumberFormatException e){
-            Log.println(Log.ERROR, "NumberFormatException", e.getMessage());
-        }
 
-    }
-
-    private void setCartIdDataLocal(int id, String token) {
-        ApiServices.apiService.getCartId(id, token).enqueue(new Callback<Integer>() {
-            @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                int cartId = response.body();
-                DataLocalManager.setCartId(cartId);
-            }
-
-            @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
-
-            }
-        });
-    }
 
     private void setEmail(View view) {
         try {

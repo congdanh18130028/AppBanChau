@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         getIntent().setAction("Already created");
 
         setupBottomNavigationView();
-        setPosAfterLogin();
+//        setPosAfterLogin();
 
     }
 
@@ -56,8 +56,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void setPosAfterLogin() {
         Intent i = getIntent();
-        int posAfterLogin = i.getIntExtra("POS", 0);
-        viewPager.setCurrentItem(posAfterLogin);
+        if(i != null){
+            int posAfterLogin = i.getIntExtra("POS", 0);
+            if(posAfterLogin == 3){
+                viewPager.setCurrentItem(posAfterLogin);
+            }
+        }
+
+
     }
 
     private void setupBottomNavigationView() {

@@ -32,7 +32,7 @@ public interface ApiServices {
             .create();
     
     ApiServices apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.31.237:45455")
+            .baseUrl("https://chaudecor.tk")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiServices.class);
@@ -43,6 +43,8 @@ public interface ApiServices {
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @GET("api/login")
     Call<String> getId(@Header("Authorization") String Aut);
+
+
 
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @GET("api/users/{id}")

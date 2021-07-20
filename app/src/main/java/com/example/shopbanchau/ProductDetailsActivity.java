@@ -34,6 +34,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private ImageView img;
     private ImageButton btn_add_cart, btn_back;
     private Button btn_buy_now;
+    private int CARTID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,30 +104,32 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
     public void addCart(View view) {
+        int cartId = DataLocalManager.getCartId();
         int product_id = Integer.parseInt(txt_id.getText().toString());
         int quantity = 1;
-        int cartId = DataLocalManager.getCartId();
         if(cartId!=0){
             CartItem cartItem = new CartItem(product_id, quantity, cartId);
             ApiServices.apiService.addCart(cartItem, DataLocalManager.getToken()).enqueue(new Callback<CartItem>() {
                 @Override
                 public void onResponse(Call<CartItem> call, Response<CartItem> response) {
                     if(response.isSuccessful()){
-                        Toast.makeText(view.getContext(), "success", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<CartItem> call, Throwable t) {
-                    Toast.makeText(view.getContext(), "fail", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "fail", Toast.LENGTH_SHORT).show();
                 }
             });
         }else {
-            Toast.makeText(view.getContext(), "chua dang nhap", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Chưa đăng nhập", Toast.LENGTH_SHORT).show();
         }
 
 
+
     }
+
 
     public void byNow(View view) {
     }

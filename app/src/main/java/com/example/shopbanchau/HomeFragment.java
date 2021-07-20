@@ -73,8 +73,10 @@ public class HomeFragment extends Fragment {
         productAdapter = new ProductAdapter(view.getContext());
         GridLayoutManager manager = new GridLayoutManager(view.getContext(), 2);
         rcvProduct.setLayoutManager(manager);
-        setListProduct();
+//        setListProduct();
+        productAdapter.setData(new ArrayList<>());
         rcvProduct.setAdapter(productAdapter);
+
         return view;
     }
 
@@ -243,6 +245,8 @@ public class HomeFragment extends Fragment {
                 if (response.isSuccessful()) {
                         List<Product> list = response.body();
                         productAdapter.setData(list);
+                }else {
+                    Toast.makeText(getContext(), "wait..", Toast.LENGTH_SHORT).show();
                 }
 
             }

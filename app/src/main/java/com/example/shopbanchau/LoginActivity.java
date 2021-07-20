@@ -119,11 +119,29 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<String> call, Response<String> response) {
                 int id = Integer.parseInt(response.body());
                 DataLocalManager.setId(id);
+                setCartIdToDataLocal(DataLocalManager.getId());
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "api fail!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
+    private void setCartIdToDataLocal(int id) {
+        ApiServices.apiService.getCartId(id, DataLocalManager.getToken()).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful()){
+                    int cartId = response.body();
+                    DataLocalManager.setCartId(cartId);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "api fail!", Toast.LENGTH_SHORT).show();
             }
         });
     }

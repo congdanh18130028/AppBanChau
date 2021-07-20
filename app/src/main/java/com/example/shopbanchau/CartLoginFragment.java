@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,16 +32,21 @@ import retrofit2.Response;
 
 public class CartLoginFragment extends Fragment {
     private RecyclerView rcvCart;
-    private TextView txt_total_price;
+    private TextView txt_total_price, empty;
     private Button btn_mua_hang;
     private CartItemAdapter cartItemAdapter;
+    private LinearLayout linear;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cart_login, container, false);
         txt_total_price = view.findViewById(R.id.txt_total_price_cart);
         btn_mua_hang = view.findViewById(R.id.btn_mua_hang);
+        linear = view.findViewById(R.id.linearLayout_by_cart);
+        empty = view.findViewById(R.id.txt_empty_cart);
 
         onClickMuaHang();
+
 
         rcvCart = view.findViewById(R.id.rcv_cart);
         cartItemAdapter = new CartItemAdapter(view.getContext(), this);
@@ -49,9 +55,20 @@ public class CartLoginFragment extends Fragment {
         setListCartItem();
         rcvCart.setAdapter(cartItemAdapter);
 
+
+
         setTotalPrice();
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(cartItemAdapter.getItemCount() ==0){
+            linear.setVisibility(View.GONE);
+            empty.setVisibility(View.VISIBLE);
+        }
     }
 
     private void onClickMuaHang() {
@@ -91,6 +108,7 @@ public class CartLoginFragment extends Fragment {
                 if(response.isSuccessful()){
                     List<CartItem> list = response.body();
                     cartItemAdapter.setData(list);
+
                 }
             }
 

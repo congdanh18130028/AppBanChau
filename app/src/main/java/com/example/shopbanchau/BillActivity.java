@@ -139,9 +139,15 @@ public class BillActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Bill> call, Response<Bill> response) {
                 if(response.isSuccessful()){
-                    Intent i = new Intent(BillActivity.this, BillSuccessActivity.class);
-                    startActivity(i);
-                    finish();
+                    Bill result = response.body();
+                    if(result== null){
+                        Toast.makeText(getApplicationContext(), "Lỗi đặt hàng!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Intent i = new Intent(BillActivity.this, BillSuccessActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+
                 }
             }
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,8 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
     private Context mContext;
     private List<CartItem> mCartItemList;
     private CartLoginFragment cartLoginFragment;
+    private LinearLayout linear;
+    private TextView empty;
     private int cartItemId;
 
 
@@ -176,6 +179,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
                                mCartItemList.remove(getBindingAdapterPosition());
                                notifyItemRemoved(getBindingAdapterPosition());
                                setTotalPrice();
+                                if(getItemCount() ==0){
+                                    linear = cartLoginFragment.getView().findViewById(R.id.linearLayout_by_cart);
+                                    empty = cartLoginFragment.getView().findViewById(R.id.txt_empty_cart);
+                                    linear.setVisibility(View.GONE);
+                                    empty.setVisibility(View.VISIBLE);
+                                }
                             }
                         }
 
