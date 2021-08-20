@@ -1,5 +1,6 @@
 package com.example.shopbanchau;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -7,6 +8,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,11 +32,13 @@ public class LoginActivity extends AppCompatActivity {
     private TextView txt;
     private Token token;
     private static final String TAG_TOKEN = "Bearer ";
+    ProgressBar progressBar ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        progressBar = findViewById(R.id.process_login);
         txt = findViewById(R.id.txt_dang_ky);
         edtEmail = findViewById(R.id.edt_email_login);
         edtPassword = findViewById(R.id.edt_password_login);
@@ -51,10 +55,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
+        progressBar.setVisibility(View.VISIBLE);
         String email = edtEmail.getText().toString().trim();
         String password = edtPassword.getText().toString().trim();
         if(validationEmail(email)&&validationPassword(password)){
             password = MD5Library.getMd5(password);
+
             ApiServices.apiService.authenticateUser(email, password).enqueue(new Callback<Token>() {
                 @Override
                 public void onResponse(Call<Token> call, Response<Token> response) {
@@ -66,15 +72,17 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("POS", 3);
                         finish();
+                        progressBar.setVisibility(View.GONE);
                         startActivity(intent);
                     }else {
-                        Toast.makeText(view.getContext(), "ten tai khoan hoac mat khau khong dung!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), "Tên tài khoản hoặc mật khẩu không đúng!", Toast.LENGTH_SHORT).show();
                     }
 
                 }
                 @Override
                 public void onFailure(Call<Token> call, Throwable t) {
                     Toast.makeText(view.getContext(), "api fail!", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                 }
             });
 
@@ -85,13 +93,16 @@ public class LoginActivity extends AppCompatActivity {
     public boolean validationEmail(String email){
         boolean isValidate = true;
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(getApplicationContext(), "Email empty!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Email không được để trống!", Toast.LENGTH_SHORT).show();
             isValidate = false;
+            progressBar.setVisibility(View.GONE);
             return isValidate;
+
     }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            Toast.makeText(getApplicationContext(), "Sai dinh dang!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Sai định dạng email!", Toast.LENGTH_SHORT).show();
             isValidate = false;
+            progressBar.setVisibility(View.GONE);
             return isValidate;
     }
         return isValidate;
@@ -101,12 +112,14 @@ public class LoginActivity extends AppCompatActivity {
         boolean isValidate = true;
         if(TextUtils.isEmpty(password)){
             isValidate = false;
-            Toast.makeText(getApplicationContext(), "Password empty!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Mật khẩu trông!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return  isValidate;
         }
         if(password.length()<6){
             isValidate = false;
-            Toast.makeText(getApplicationContext(), "Password >6!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Độ dài mật khẩu lo!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return isValidate;
         }
         return isValidate;
@@ -151,5 +164,11 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
 
+    }
+
+    public void chuyenQuenMK(View view) {
+        Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

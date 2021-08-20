@@ -26,7 +26,7 @@
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:padding="5dp"
-            android:text="Name" />
+            android:hint="Tìm kiếm"/>
 
         <ImageButton
             android:id="@+id/btn_sidebar"

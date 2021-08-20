@@ -36,6 +36,7 @@ public class ChangesPassword extends AppCompatActivity {
         txt_nl_mk_moi = findViewById(R.id.txt_nhap_lai_mk_moi);
         btn = findViewById(R.id.btn_changes_password);
         getUser();
+        setBtnBack();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

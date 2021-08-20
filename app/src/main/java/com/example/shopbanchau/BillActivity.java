@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,15 +33,21 @@ public class BillActivity extends AppCompatActivity {
     private RecyclerView rcvBill;
     private BillDetailsAdapter billDetailsAdapter;
     private int totalPrice;
+    private ImageButton btn_back;
     private TextView txt_user_name, txt_user_phone, txt_user_location, txt_tong_tien_hang , txt_tong_thanh_toan, txt_total_price;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill);
-
         setUserBill();
         setBill();
-
+        btn_back = findViewById(R.id.btn_back_bill);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         rcvBill = findViewById(R.id.rcv_bill_details);
         billDetailsAdapter = new BillDetailsAdapter(this);
         GridLayoutManager manager = new GridLayoutManager(this, 1);

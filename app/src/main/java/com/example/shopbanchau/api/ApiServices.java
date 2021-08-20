@@ -136,5 +136,7 @@ public interface ApiServices {
                         @Header("Authorization") String Aut,
                         @Body List<UserEdit> list);
 
+    @GET("api/users/forgotPassword/{email}")
+    Call<Void> getForgotPassword(@Path("email") String email);
 
 }

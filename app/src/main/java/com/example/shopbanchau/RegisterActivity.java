@@ -7,6 +7,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static final Pattern PHONE_VN
             = Pattern.compile(
             "(84|0[3|5|7|8|9])+([0-9]{8})\\b");
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void init() {
+        progressBar = findViewById(R.id.progress_register);
         edt_name = findViewById(R.id.edt_name_register);
         edt_phone = findViewById(R.id.edt_phone_register);
         edt_address = findViewById(R.id.edt_address_register);
@@ -50,42 +53,52 @@ public class RegisterActivity extends AppCompatActivity {
     private boolean validationForm(String name, String phone, String address, String email, String password, String repassword ){
         if(TextUtils.isEmpty(name)){
             Toast.makeText(getApplicationContext(), "Tên người dùng trống", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return false;
         }
         if(TextUtils.isEmpty(phone)){
             Toast.makeText(getApplicationContext(), "Số điện thoại trống", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return false;
         }
         if(!PHONE_VN.matcher(phone).matches()){
             Toast.makeText(getApplicationContext(), "Sai định dạng số điện thoại", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return false;
         }
         if(TextUtils.isEmpty(address)){
             Toast.makeText(getApplicationContext(), "Địa chỉ trống", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return false;
         }
         if(TextUtils.isEmpty(email)){
             Toast.makeText(getApplicationContext(), "Email trống!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return false;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             Toast.makeText(getApplicationContext(), "Sai định dạng email", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return false;
         }
         if(TextUtils.isEmpty(password)){
             Toast.makeText(getApplicationContext(), "Mật khẩu trống", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return false;
         }
         if(password.length()<6){
             Toast.makeText(getApplicationContext(), "Đặt mật khẩu phải lớn hơn 5 kí tự", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return false;
         }
         if(TextUtils.isEmpty(repassword)){
             Toast.makeText(getApplicationContext(), "Nhập lại mật khẩu trống", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return false;
         }
         if(!password.equals(repassword)){
             Toast.makeText(getApplicationContext(), "Nhập lại mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return false;
         }
         return true;
@@ -113,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                if(user==null){
                    regis(name, phone, address, email, password);
+                   progressBar.setVisibility(View.GONE);
                }else {
                    Toast.makeText(getApplicationContext(), "Email đã tồn tại", Toast.LENGTH_SHORT).show();
                }
@@ -127,6 +141,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void register(View view) {
+        progressBar.setVisibility(View.VISIBLE);
         String name = edt_name.getText().toString().trim();
         String phone = edt_phone.getText().toString().trim();
         String address = edt_address.getText().toString().trim();
