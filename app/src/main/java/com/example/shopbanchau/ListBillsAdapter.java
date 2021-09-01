@@ -21,6 +21,8 @@ public class ListBillsAdapter extends FragmentStatePagerAdapter {
                 return new BillConfirmFragment();
             case 2:
                 return new BillReceivedFragment();
+            case 3:
+                return new BillsCancel();
             default:
                 return new BillsWaitConfirmFragment();
         }
@@ -28,7 +30,7 @@ public class ListBillsAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     @Override
@@ -43,6 +45,9 @@ public class ListBillsAdapter extends FragmentStatePagerAdapter {
                 break;
             case 2:
                 title = "Đã giao";
+                break;
+            case 3:
+                title = "Đã hủy";
                 break;
         }
         return title;

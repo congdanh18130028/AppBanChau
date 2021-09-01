@@ -155,6 +155,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
                                     quantity.setText(String.valueOf(n));
                                 }
                                 setTotalPrice();
+                                if(getItemCount() ==0){
+                                    linear = cartLoginFragment.getView().findViewById(R.id.linearLayout_by_cart);
+                                    empty = cartLoginFragment.getView().findViewById(R.id.txt_empty_cart);
+                                    linear.setVisibility(View.GONE);
+                                    empty.setVisibility(View.VISIBLE);
+                                }
 
                             }
                         }

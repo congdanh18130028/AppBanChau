@@ -26,13 +26,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder> {
+public class BillAdapterBillConfirm extends RecyclerView.Adapter<BillAdapterBillConfirm.BillViewHolder> {
     private Context mContext;
     private List<Bill> mListBillConfirm;
     private List<BillDetails> mListBillDetails;
     private int ID;
 
-    public BillAdapter(Context mContext){
+    public BillAdapterBillConfirm(Context mContext){
         this.mContext = mContext;
     }
 
@@ -54,12 +54,12 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
     @NonNull
     @Override
     public BillViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bill, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bill_confirm, parent, false);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(view.getContext(), ReviewBillActivity.class);
-                TextView txt_id = view.findViewById(R.id.txt_bill_wait_id);
+                TextView txt_id = view.findViewById(R.id.txt_bill_confirm_id);
                 ID = Integer.parseInt(txt_id.getText().toString());
                 intent.putExtra("ID", ID);
                 view.getContext().startActivity(intent);
@@ -143,42 +143,17 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
     public class BillViewHolder extends RecyclerView.ViewHolder{
         private ImageView img_first_product;
         private TextView id, title_first_product, quantity_first_product, price_product, quantity_item, total_price, txt_view_more;
-        private Button btn_confirm;
+
         public BillViewHolder(@NonNull View itemView) {
             super(itemView);
-            id = itemView.findViewById(R.id.txt_bill_wait_id);
-            img_first_product = itemView.findViewById(R.id.img_bill_wait_first_product);
-            title_first_product = itemView.findViewById(R.id.txt_title_bill_wait_first_product);
-            quantity_first_product = itemView.findViewById(R.id.txt_bill_wait_quantity_product);
-            price_product = itemView.findViewById(R.id.txt_bill_wait_price_product);
-            quantity_item = itemView.findViewById(R.id.txt_bill_wait_quantity_product_in_bill);
-            total_price = itemView.findViewById(R.id.txt_bill_wait_total_price);
-            txt_view_more = itemView.findViewById(R.id.txt_bill_wait_view_more);
-
-
-            btn_confirm = itemView.findViewById(R.id.btn_cancel_bill_wait_item);
-            btn_confirm.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                   ID = Integer.parseInt(id.getText().toString());
-//                   ApiServices.apiService.confirmBill(ID, 1).enqueue(new Callback<Void>() {
-//                       @Override
-//                       public void onResponse(Call<Void> call, Response<Void> response) {
-//                           if(response.isSuccessful()){
-//                               mListBillConfirm.remove(getBindingAdapterPosition());
-//                               notifyItemRemoved(getBindingAdapterPosition());
-//                           }
-//                       }
-//
-//                       @Override
-//                       public void onFailure(Call<Void> call, Throwable t) {
-//                           Toast.makeText(mContext, "fail api!", Toast.LENGTH_SHORT).show();
-//                       }
-//                   });
-                    Toast.makeText(mContext, "Huy dơn " + ID, Toast.LENGTH_SHORT).show();
-                }
-            });
-
+            id = itemView.findViewById(R.id.txt_bill_confirm_id);
+            img_first_product = itemView.findViewById(R.id.img_bill_confirm_first_product);
+            title_first_product = itemView.findViewById(R.id.txt_title_bill_confirm_first_product);
+            quantity_first_product = itemView.findViewById(R.id.txt_bill_confirm_quantity_product);
+            price_product = itemView.findViewById(R.id.txt_bill_confirm_price_product);
+            quantity_item = itemView.findViewById(R.id.txt_bill_confirm_quantity_product_in_bill);
+            total_price = itemView.findViewById(R.id.txt_bill_confirm_total_price);
+            txt_view_more = itemView.findViewById(R.id.txt_bill_confirm_view_more);
 
         }
     }

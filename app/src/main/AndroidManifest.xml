@@ -34,7 +34,8 @@
         <activity android:name=".ChangesPassword" />
         <activity android:name=".ProductActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".ListBills"/>
+        <activity android:name=".ListBills" />
+        <activity android:name=".ReviewBillActivity"/>
     </application>
 
 </manifest>

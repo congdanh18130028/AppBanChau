@@ -22,15 +22,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BillReceivedFragment extends Fragment {
+
+public class BillsCancel extends Fragment {
+
     private RecyclerView rcvBillConfirm;
     private BillAdapterBillConfirm billAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_bill_received, container, false);
+        View view = inflater.inflate(R.layout.fragment_bills_cancel, container, false);
 
-        rcvBillConfirm = view.findViewById(R.id.rcv_bill_received);
+
+        rcvBillConfirm = view.findViewById(R.id.rcv_bill_cancel);
         billAdapter = new BillAdapterBillConfirm(view.getContext());
         GridLayoutManager manager = new GridLayoutManager(view.getContext(), 1);
         rcvBillConfirm.setLayoutManager(manager);
@@ -39,12 +42,10 @@ public class BillReceivedFragment extends Fragment {
         rcvBillConfirm.setAdapter(billAdapter);
 
         return view;
-
-
     }
 
     private void setListBillWaitConfirm() {
-        ApiServices.apiService.getListBillConfirm(DataLocalManager.getToken(), DataLocalManager.getId(), 2).enqueue(new Callback<List<Bill>>() {
+        ApiServices.apiService.getListBillConfirm(DataLocalManager.getToken(), DataLocalManager.getId(), 1).enqueue(new Callback<List<Bill>>() {
             @Override
             public void onResponse(Call<List<Bill>> call, Response<List<Bill>> response) {
                 if(response.isSuccessful()){
@@ -60,4 +61,5 @@ public class BillReceivedFragment extends Fragment {
             }
         });
     }
+
 }

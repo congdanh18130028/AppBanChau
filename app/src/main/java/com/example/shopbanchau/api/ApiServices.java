@@ -146,10 +146,25 @@ public interface ApiServices {
     Call<List<BillDetails>> getListBillDetails(@Header("Authorization") String Aut,
                                                @Path("billId") int billId);
 
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    @GET("api/bills/{id}")
+    Call<Bill> getBill(@Header("Authorization") String Aut,
+                                        @Path("id") int id);
+
 
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @GET("api/bills/user")
     Call<List<Bill>> getListBillWaitConfirm(@Header("Authorization") String Aut,
                                             @Query("userId") int userId,
                                             @Query("state") int state);
+
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    @GET("api/bills/user")
+    Call<List<Bill>> getListBillConfirm(@Header("Authorization") String Aut,
+                                            @Query("userId") int userId,
+                                            @Query("state") int state);
+
+
+
+
 }

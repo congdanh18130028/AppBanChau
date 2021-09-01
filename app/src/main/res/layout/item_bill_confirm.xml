@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txt_bill_wait_id"
+            android:id="@+id/txt_bill_confirm_id"
             android:layout_width="0dp"
             android:layout_height="0dp"/>
 
@@ -21,7 +21,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/img_bill_wait_first_product"
+                android:id="@+id/img_bill_confirm_first_product"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:scaleType="centerCrop"
@@ -35,14 +35,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txt_title_bill_wait_first_product"
+                    android:id="@+id/txt_title_bill_confirm_first_product"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="Tital" />
 
                 <TextView
-                    android:id="@+id/txt_bill_wait_quantity_product"
+                    android:id="@+id/txt_bill_confirm_quantity_product"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
@@ -50,7 +50,7 @@
                     android:text="x0" />
 
                 <TextView
-                    android:id="@+id/txt_bill_wait_price_product"
+                    android:id="@+id/txt_bill_confirm_price_product"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
@@ -75,7 +75,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txt_bill_wait_view_more"
+                android:id="@+id/txt_bill_confirm_view_more"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -96,7 +96,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txt_bill_wait_quantity_product_in_bill"
+                android:id="@+id/txt_bill_confirm_quantity_product_in_bill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
@@ -105,7 +105,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
@@ -114,7 +114,7 @@
                 android:text="Thành tiền: " />
 
             <TextView
-                android:id="@+id/txt_bill_wait_total_price"
+                android:id="@+id/txt_bill_confirm_total_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
@@ -129,20 +129,12 @@
         </LinearLayout>
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/grey"
             android:orientation="horizontal"></LinearLayout>
 
-        <Button
-            android:id="@+id/btn_cancel_bill_wait_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-
-            android:text="Hủy đơn hàng" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

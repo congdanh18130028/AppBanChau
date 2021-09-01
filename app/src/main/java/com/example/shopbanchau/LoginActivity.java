@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                     }else {
                         Toast.makeText(view.getContext(), "Tên tài khoản hoặc mật khẩu không đúng!", Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
                     }
 
                 }
