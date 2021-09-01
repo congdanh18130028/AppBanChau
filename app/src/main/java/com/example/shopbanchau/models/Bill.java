@@ -26,6 +26,16 @@ public class Bill {
         this.isPay = isPay;
     }
 
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Date getDate() {
         return date;
     }

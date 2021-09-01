@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BillSuccessActivity">
+    tools:context=".BillSuccessActivity"
+    android:background="@color/white">
 
     <ImageButton
         android:id="@+id/btn_back_home_in_success_reg"
@@ -15,7 +16,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/transparent"
+        android:background="@color/white"
         app:srcCompat="@drawable/ic_baseline_arrow_green_30"
         />
 

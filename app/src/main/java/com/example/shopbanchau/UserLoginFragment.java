@@ -25,7 +25,7 @@ import retrofit2.Response;
 
 public class UserLoginFragment extends Fragment {
     private Button btnLogout;
-    private LinearLayout btnEditAccount;
+    private LinearLayout btnEditAccount, btnViewListBills;
     private TextView txt_email;
 
     @Override
@@ -35,8 +35,20 @@ public class UserLoginFragment extends Fragment {
         setEmail(view);
         setCartId();
         clickButtonEditAccount(view);
+        clickButtonViewListBills(view);
         return view;
 
+    }
+
+    private void clickButtonViewListBills(View view) {
+        btnViewListBills = view.findViewById(R.id.btn_view_list_bills);
+        btnViewListBills.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ListBills.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setCartId() {

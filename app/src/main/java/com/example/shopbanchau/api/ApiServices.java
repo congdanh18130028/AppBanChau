@@ -1,6 +1,7 @@
 package com.example.shopbanchau.api;
 
 import com.example.shopbanchau.models.Bill;
+import com.example.shopbanchau.models.BillDetails;
 import com.example.shopbanchau.models.CartItem;
 import com.example.shopbanchau.models.Product;
 import com.example.shopbanchau.models.Token;
@@ -139,4 +140,16 @@ public interface ApiServices {
     @GET("api/users/forgotPassword/{email}")
     Call<Void> getForgotPassword(@Path("email") String email);
 
+
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    @GET("api/bills/billDetails/{billId}")
+    Call<List<BillDetails>> getListBillDetails(@Header("Authorization") String Aut,
+                                               @Path("billId") int billId);
+
+
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    @GET("api/bills/user")
+    Call<List<Bill>> getListBillWaitConfirm(@Header("Authorization") String Aut,
+                                            @Query("userId") int userId,
+                                            @Query("state") int state);
 }

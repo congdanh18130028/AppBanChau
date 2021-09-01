@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShopBanChau"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ForgotPasswordActivity"></activity>
+
+        <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,6 +34,7 @@
         <activity android:name=".ChangesPassword" />
         <activity android:name=".ProductActivity" />
         <activity android:name=".SearchActivity" />
+        <activity android:name=".ListBills"/>
     </application>
 
 </manifest>
